@@ -6,7 +6,7 @@ import "./App.css";
 
 // Criado um componente chamado App.
 function App() {
-  return <div>App React</div>;
+  return <div></div>;
 }
 
 export default App; // Exporta o componente App.
