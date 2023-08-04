@@ -1,13 +1,24 @@
 // Importa a biblioteca React.
-import { func } from "prop-types";
 import React from "react";
+
+// Importa o componente da biblioteca react-router-dom.
 import { Link } from "react-router-dom";
+
+// Importa os componentes.
+import Input from "../Forms/Input";
+import Button from "../Forms/Button";
+
+// Importa o hook.
+import useForm from "../../hooks/useForm";
 
 // Criado um componente chamado LoginForm.
 const LoginForm = () => {
-  const [username, setUsername] = React.useState(""); // Cria um estado chamado username e uma função setUsername para alterar o estado. O valor inicial do estado é uma string vazia.
-  const [password, setPassword] = React.useState(""); // Cria um estado chamado password e uma função setPassword para alterar o estado. O valor inicial do estado é uma string vazia.
+  // Armazena todos os dados(estados, funções etc) do hook useForm nas variáveis username e password.
+  const username = useForm("email");
+  const password = useForm("password");
+  console.log(username, password);
 
+  // Criado uma função chamada handleSubmit responsável por fazer o envio dos dados do formulário para a API.
   function handleSubmit(event) {
     event.preventDefault(); // Previne o comportamento padrão do formulário, que é recarregar a página quando o formulário é enviado.
 
@@ -20,15 +31,14 @@ const LoginForm = () => {
         "Content-Type": "application/json", // Define o cabeçalho como application/json, ou seja, o corpo da requisição é um objeto JSON.
       },
       // Define o corpo da requisição com o método JSON.stringify que transforma um objeto JavaScript em uma string JSON.
-      body: JSON.stringify({
-        username,
-        password,
-      }),
+      body: JSON.stringify(username.value, password.value),
     })
+      // O response é a resposta da requisição.
       .then((response) => {
         console.log(response);
         return response.json(); // Retorna o corpo da resposta como JSON.
       })
+      // O json é o corpo da resposta convertido em JSON.
       .then((json) => {
         console.log(json);
         return json; // Retorna o corpo da resposta como JSON.
@@ -40,22 +50,16 @@ const LoginForm = () => {
       <h1>Login</h1>
 
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          // O valor do input é o valor do estado username, ou seja, o valor inicial é uma string vazia.
-          value={username}
-          // Quando houver uma alteração no input, a função anõnima é chamada, atualizando o estado username pelo value(o que foi digitado) do target(elemento que disparou o evento).
-          onChange={({ target }) => setUsername(target.value)}
-        />
-        <input
-          type="password"
-          // O valor do input é o valor do estado username, ou seja, o valor inicial é uma string vazia.
-          value={password}
-          // Quando houver uma alteração no input, a função anõnima é chamada, atualizando o estado username pelo value(o que foi digitado) do target(elemento que disparou o evento).
-          onChange={({ target }) => setPassword(target.value)}
-        />
+        {/* Está chamando o componente Input e passando as props label, type e name. */}
+        {/* O ...username está dando acesso a todas as props do hook useForm, sendo elas: value, setValue e onChange. */}
+        <Input label="Usuário" type="text" name="username" {...username} />
 
-        <button>Entrar</button>
+        {/* Está chamando o componente Input e passando as props label, type e name. */}
+        {/* O ...password está dando acesso a todas as props do hook useForm, sendo elas: value, setValue e onChange. */}
+        <Input label="Senha" type="password" name="password" {...password} />
+
+        {/* Está chamando o componente Button e passando a props children, que é o conteúdo do botão. */}
+        <Button>Entrar</Button>
       </form>
 
       {/* O Link é responsável por criar um link para uma rota. */}

@@ -1,5 +1,4 @@
 // Importa a biblioteca React.
-import { func } from "prop-types";
 import React from "react";
 
 // Criado um componente chamado UserPost, que vai ser responsável por enviar os dados do formulário para a API.
