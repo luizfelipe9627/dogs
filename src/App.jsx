@@ -15,7 +15,6 @@ import Login from "./components/Login/Login";
 
 // Criado um componente chamado App.
 function App() {
-<<<<<<< HEAD
   return (
     <React.Fragment>
       {/* O BrowserRouter é o componente que vai encapsular toda a aplicação.*/}
@@ -37,9 +36,6 @@ function App() {
       </BrowserRouter>
     </React.Fragment>
   );
-=======
-  return <div></div>;
->>>>>>> f1c0770f1199b3783563f3f35b0d4179ce3489ee
 }
 
 export default App; // Exporta o componente App.
