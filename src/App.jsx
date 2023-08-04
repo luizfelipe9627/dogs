@@ -28,10 +28,13 @@ function App() {
           {/* O element é o componente que vai ser renderizado quando a rota for acessada. */}
 
           {/* Renderiza o componente Home quando a rota: / for acessada, ou seja, a rota raiz. */}
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Home />} />
+
           {/* Renderiza o componente Login quando a rota: /login for acessada. */}
-          <Route path="/login" element={<Login/>} />
+          {/* O * está sendo usado para indicar que a rota pode ter mais de um nível, ou seja, /login/criar por exemplo. */}
+          <Route path="/login/*" element={<Login />} end />
         </Routes>
+        {/* O Footer é o componente que vai estár presente em todas as rotas, pois está fora do Routes. */}
         <Footer />
       </BrowserRouter>
     </React.Fragment>

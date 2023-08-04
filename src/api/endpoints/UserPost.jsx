@@ -14,7 +14,7 @@ const UserPost = () => {
 
     // Faz uma requisição para a API usando o método fetch, que está recebendo dois parâmetros: o endereço da API e um objeto com as configurações da requisição.
     fetch("https://dogsapi.origamid.dev/json/api/user", {
-      method: "POST", // Define o método como POST, ou seja, está enviando dados para a API.
+      method: "POST", // Define o método como POST, ou seja, está enviando os dados para a API.
       // O headers é um objeto que contém os cabeçalhos da requisição.
       headers: {
         // O cabeçalho Content-Type informa o tipo de conteúdo que está sendo enviado no corpo da requisição.
