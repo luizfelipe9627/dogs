@@ -1,4 +1,42 @@
-input {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --type-first: Helvetica, Arial, sans-serif;
+  --type-second: 'Spectral', georgia;
+}
+
+body {
+  padding-top: 4rem;
+  font-family: var(--type-first);
+  color: #333;
+}
+
+ul, li {
+  list-style: none;
+}
+
+img {
   display: block;
-  margin-bottom: 1rem;
+  max-width: 100%;
+}
+
+button, input {
+  display: block;
+  font-size: 1rem;
+  font-family: var(--type-first);
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 50rem;
+  padding: 0 1rem;
+  margin: 0 auto;
 }
