@@ -11,38 +11,57 @@ import Button from "../Forms/Button";
 // Importa o hook.
 import useForm from "../../hooks/useForm";
 
+// Importa os dados da API.
+import { TOKEN_POST, USER_GET } from "../../Api";
+
 // Criado um componente chamado LoginForm.
 const LoginForm = () => {
   // Armazena todos os dados(estados, funções etc) do hook useForm nas variáveis username e password.
-  const username = useForm("email");
-  const password = useForm("password");
-  console.log(username, password);
+  const username = useForm();
+  const password = useForm();
 
-  // Criado uma função chamada handleSubmit responsável por fazer o envio dos dados do formulário para a API.
-  function handleSubmit(event) {
+  // O React.useEffect é responsável por executar uma função quando o componente é renderizado, nesse caso é executado apenas quando o componente é renderizado pela primeira vez, pois o array de dependências está vazio.
+  React.useEffect(() => {
+    const token = window.localStorage.getItem("token"); // Puxa o token no localStorage e armazena na constante token.
+
+    // Se o token existir, executa o if.
+    if (token) {
+      getUser(token); // Executa a função getUser passando o token como parâmetro, assim puxando os dados do usuário.
+    }
+  }, []);
+
+  // Criado uma função chamada getUser responsável por fazer a requisição para a API para pegar os dados do usuário, a função é assíncrona ou seja, ela espera a resposta da API para continuar o código.
+  async function getUser(token) {
+    // Criado duas constantes que desestruturam o retorno da função USER_GET, sendo a url a url da API e options as configurações da requisição.
+    const { url, options } = USER_GET(token); // Está passando o token como parâmetro para a função USER_GET.
+
+    // O fetch faz uma requisição para a API que está recebendo dois parâmetros: o endereço da API e um objeto com as configurações da requisição.
+    const response = await fetch(url, options);
+    // O await faz com que a requisição espere a resposta da API para continuar o código, quando a resposta chegar, ela é armazenada na constante response.
+    const json = await response.json(); // Transforma a resposta da requisição em um objeto JSON e armazena na constante json quando a resposta chegar.
+    console.log(json); // Exibe o objeto json no console.
+  }
+
+  // Criado uma função chamada handleSubmit responsável por fazer o envio dos dados do formulário para a API. O async faz com que a função espere a resposta da API para continuar o código.
+  async function handleSubmit(event) {
     event.preventDefault(); // Previne o comportamento padrão do formulário, que é recarregar a página quando o formulário é enviado.
 
-    // Faz uma requisição para a API usando o método fetch, que está recebendo dois parâmetros: o endereço da API e um objeto com as configurações da requisição.
-    fetch("https://dogsapi.origamid.dev/json/jwt-auth/v1/token", {
-      method: "POST", // Define o método como POST, ou seja, está enviando os dados para a API.
-      // O headers é um objeto que contém os cabeçalhos da requisição.
-      headers: {
-        // O cabeçalho Content-Type informa o tipo de conteúdo que está sendo enviado no corpo da requisição.
-        "Content-Type": "application/json", // Define o cabeçalho como application/json, ou seja, o corpo da requisição é um objeto JSON.
-      },
-      // Define o corpo da requisição com o método JSON.stringify que transforma um objeto JavaScript em uma string JSON.
-      body: JSON.stringify(username.value, password.value),
-    })
-      // O response é a resposta da requisição.
-      .then((response) => {
-        console.log(response);
-        return response.json(); // Retorna o corpo da resposta como JSON.
-      })
-      // O json é o corpo da resposta convertido em JSON.
-      .then((json) => {
-        console.log(json);
-        return json; // Retorna o corpo da resposta como JSON.
+    // Se o username e o password forem válidos, ou seja, se o formulário estiver válido, executa o if e faz a requisição para a API.
+    if (username.validate() && password.validate()) {
+      // Criado duas constantes que desestruturam o retorno da função TOKEN_POST, sendo a url a url da API e options as configurações da requisição.
+      const { url, options } = TOKEN_POST({
+        // Está passando os dados do formulário para a API.
+        username: username.value,
+        password: password.value,
       });
+
+      // O fetch faz uma requisição para a API que está recebendo dois parâmetros: o endereço da API e um objeto com as configurações da requisição.
+      const response = await fetch(url, options); // O await faz com que a requisição espere a resposta da API para continuar o código, quando a resposta chegar, ela é armazenada na constante response.
+      const json = await response.json(); // Transforma a resposta da requisição em um objeto JSON e armazena na constante json quando a resposta chegar.
+
+      window.localStorage.setItem("token", json.token); // Armazena o token no localStorage.
+      getUser(json.token); // Executa a função getUser passando o token como parâmetro.
+    }
   }
 
   return (

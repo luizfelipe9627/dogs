@@ -10,8 +10,14 @@ import styles from "./Header.module.css";
 // Importa e transforma a imagem em um componente nomeado como Dogs.
 import { ReactComponent as Dogs } from "../assets/svg/dogs.svg";
 
+// Importa o contexto.
+import { UserContext } from "../UserContext";
+
 // Criado um componente chama Header.
 const Header = () => {
+  const context = React.useContext(UserContext); // O useContext é um hook que permite que um componente acesse o contexto e os seus dados e funcionalidades, armazenando na variável context.
+  console.log(context); // Imprime no console o valor da variável usuario.
+
   return (
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
@@ -20,7 +26,10 @@ const Header = () => {
         <Link className={styles.logo} to="/" aria-label="Dogs - Home">
           <Dogs />
         </Link>
-        <Link className={styles.login} to="/login">Login / Criar</Link>
+        <Link className={styles.login} to="/login">
+          {context.usuario}
+          Login / Criar
+        </Link>
       </nav>
     </header>
   );

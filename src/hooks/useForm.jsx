@@ -1,5 +1,4 @@
 // Importa a biblioteca React.
-import { func } from "prop-types";
 import React from "react";
 
 // Criado uma constante chamada types que contém um objeto com os tipos de validação do formulário.
@@ -16,7 +15,7 @@ const useForm = (type) => {
   const [value, setValue] = React.useState(""); // Cria um estado chamado value e uma função para atualizar esse estado chamada setValue. O valor inicial do estado é uma string vazia.
   const [error, setError] = React.useState(null); // Cria um estado chamado error e uma função para atualizar esse estado chamada setError. O valor inicial do estado é nulo(null).
 
-  // Criado uma função chamada validate que recebe um parâmetro chamado value, responsável por validar o formulário e atualizar o estado error.
+  // Criado uma função chamada validate responsável por validar o formulário e atualizar o estado error.
   function validate() {
     // Se o tipo for falso, ou seja vazio, retorna true fazendo com que o formulário não seja validado.
     if (type === false) return true;
@@ -24,7 +23,8 @@ const useForm = (type) => {
     if (value.length === 0) {
       setError("Preencha um valor."); // Atualiza o estado error com a mensagem "Preencha um valor.".
       return false; // Retorna false para indicar que o formulário está vazio.
-    } // Se o objeto types contém o tipo passado como parâmetro(o value) da função e o regex do tipo(contido no objeto types) não passar no teste do método test, retorna false.
+    } 
+    // Se não, se o objeto types contém o tipo passado como parâmetro(o value) da função e o regex do tipo(contido no objeto types) não passar no teste do método test, retorna false.
     else if (types[type] && !types[type].regex.test(value)) {
       setError(types[type].message); // Atualiza o estado error com a mensagem do tipo de validação.
       return false; // Retorna false para indicar que o formulário está inválido.
@@ -36,6 +36,11 @@ const useForm = (type) => {
 
   // Criado uma função chamada onChange responsável por atualizar o estado value.
   function onChange({ target }) {
+    // Se o estado error for true ele executa o if.
+    if (error) {
+      validate(target.value); // Executa a função validate passando o valor(o que foi digitado) do target(elemento que disparou o evento) como parâmetro.
+    }
+
     setValue(target.value); // Atualiza o estado value pelo value(o que foi digitado) do target(elemento que disparou o evento).
   }
 
