@@ -17,6 +17,22 @@ export function TOKEN_POST(body) {
   };
 }
 
+// Criado uma função chamada TOKEN_VALIDATE_POST responsável por fazer a requisição para a API para validar o token.
+export function TOKEN_VALIDATE_POST(token) {
+  return {
+    url: API_URL + "/jwt-auth/v1/token/validate", // Define o endereço da API que faz a requisição para criar o token.
+    options: {
+      // O method é o método da requisição.
+      method: "POST", // Define o método como POST, ou seja, está enviando os dados para a API.
+      // O headers é um objeto que contém os cabeçalhos da requisição.
+      headers: {
+        // O cabeçalho Authorization informa que o corpo da requisição é um token.
+        Authorization: "Bearer " + token, // Define o cabeçalho como Bearer + token, ou seja, o corpo da requisição é um token.
+      },
+    },
+  };
+}
+
 // Criado uma função chamada USER_GET responsável por fazer a requisição para a API para pegar os dados do usuário.
 export function USER_GET(token) {
   return {
@@ -26,8 +42,8 @@ export function USER_GET(token) {
       method: "GET", // Define o método como GET, ou seja, está puxando os dados do usuário.
       // O headers é um objeto que contém os cabeçalhos da requisição.
       headers: {
-        // O cabeçalho Content-Type informa o tipo de conteúdo que está sendo enviado no corpo da requisição.
-        "Authorization": "Bearer " + token, // Define o cabeçalho como Bearer + token, ou seja, o corpo da requisição é um token.
+        // O cabeçalho Authorization informa que o corpo da requisição é um token.
+        Authorization: 'Bearer ' + token, // Define o cabeçalho como Bearer + token, ou seja, o corpo da requisição é um token.
       },
     },
   };

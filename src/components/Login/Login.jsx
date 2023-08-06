@@ -2,7 +2,7 @@
 import React from "react";
 
 // Importa o componente da biblioteca react-router-dom.
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // Importa o componente.
 import LoginForm from "./LoginForm";
@@ -10,8 +10,15 @@ import LoginCreate from "./LoginCreate";
 import LoginPasswordLost from "./LoginPasswordLost";
 import LoginPasswordReset from "./LoginPasswordReset";
 
+// Importa o contexto.
+import { UserContext } from "../../UserContext";
+
 // Criado um componente chama Login.
 const Login = () => {
+  const { login } = React.useContext(UserContext); // Puxa o estado login do contexto UserContext e armazena na variável login.
+
+  if (login === true) return <Navigate to="/" />; // Se o login for true, redireciona o usuário para a rota raiz.
+
   return (
     <div>
       {/* O Routes é o componente que vai conter todas as rotas da aplicação. */}
