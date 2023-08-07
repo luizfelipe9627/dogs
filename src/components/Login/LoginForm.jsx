@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 // Importa os componentes.
 import Input from "../Forms/Input";
 import Button from "../Forms/Button";
+import Error from "../Helper/Error";
+
+// Importa o CSS Module.
+import styles from "./LoginForm.module.css";
 
 // Importa o hook.
 import useForm from "../../hooks/useForm";
@@ -33,10 +37,10 @@ const LoginForm = () => {
   }
 
   return (
-    <section>
-      <h1>Login</h1>
+    <section className="animeLeft">
+      <h1 className="title">Login</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         {/* Está chamando o componente Input e passando as props label, type e name. */}
         {/* O ...username está dando acesso a todas as props do hook useForm, sendo elas: value, setValue e onChange. */}
         <Input label="Usuário" type="text" name="username" {...username} />
@@ -52,12 +56,26 @@ const LoginForm = () => {
           <Button>Entrar</Button>
         )}
 
-        {/* Se o estado error for true, mostra o parágrafo com a mensagem de erro. */}
-        {error && <p>{error}</p>}
+        {/* Está chamando o componente Error e passando a props error que recebe o estado error do contexto UserContext. */}
+        <Error error={error} />
       </form>
 
-      {/* O Link é responsável por criar um link para uma rota. */}
-      {/* O atributo to é o caminho para a página. */}
+      {/* O Link é responsável por criar um link para uma rota e o to é responsável por definir a rota. */}
+      <Link className={styles.perdeu} to="/login/perdeu">
+        Perdeu a senha?
+      </Link>
+
+      <div className={styles.cadastro}>
+        <h2 className={styles.subtitle}>Cadastre-se</h2>
+        <p>Ainda não possui conta? Cadastre-se no site.</p>
+
+        {/* O Link é responsável por criar um link para uma rota e o to é responsável por definir a rota. */}
+        <Link className={styles.buttonCriar} to="/login/criar">
+          Cadastrar
+        </Link>
+      </div>
+
+      {/* O Link é responsável por criar um link para uma rota e o to é responsável por definir a rota. */}
       <Link to="/login/criar">Cadastro</Link>
     </section>
   );
