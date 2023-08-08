@@ -9,8 +9,9 @@ import Input from "../Forms/Input";
 import Button from "../Forms/Button";
 import Error from "../Helper/Error";
 
-// Importa o CSS Module.
+// Importa os CSS Modules.
 import styles from "./LoginForm.module.css";
+import stylesButton from "../Forms/Button.module.css";
 
 // Importa o hook.
 import useForm from "../../hooks/useForm";
@@ -42,11 +43,9 @@ const LoginForm = () => {
 
       <form className={styles.form} onSubmit={handleSubmit}>
         {/* Está chamando o componente Input e passando as props label, type e name. */}
-        {/* O ...username está dando acesso a todas as props do hook useForm, sendo elas: value, setValue e onChange. */}
-        <Input label="Usuário" type="text" name="username" {...username} />
+        {/* O operador spread(...) está dando acesso a todas as props do hook useForm, sendo elas: value, setValue, onChange, error, validate e onBlur. */}
 
-        {/* Está chamando o componente Input e passando as props label, type e name. */}
-        {/* O ...password está dando acesso a todas as props do hook useForm, sendo elas: value, setValue e onChange. */}
+        <Input label="Usuário" type="text" name="username" {...username} />
         <Input label="Senha" type="password" name="password" {...password} />
 
         {/* Se o estado loading for true, mostra o botão desabilitado, senão, mostra o botão habilitado entrar. */}
@@ -70,13 +69,10 @@ const LoginForm = () => {
         <p>Ainda não possui conta? Cadastre-se no site.</p>
 
         {/* O Link é responsável por criar um link para uma rota e o to é responsável por definir a rota. */}
-        <Link className={styles.buttonCriar} to="/login/criar">
-          Cadastrar
+        <Link className={stylesButton.button} to="/login/criar">
+          Cadastro
         </Link>
       </div>
-
-      {/* O Link é responsável por criar um link para uma rota e o to é responsável por definir a rota. */}
-      <Link to="/login/criar">Cadastro</Link>
     </section>
   );
 };

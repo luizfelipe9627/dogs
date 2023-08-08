@@ -31,6 +31,7 @@ export const UserStorage = ({ children }) => {
     const json = await response.json(); // Transforma a resposta da requisição em um objeto JSON e armazena na constante json quando a resposta chegar.
     setData(json); // Armazena os dados do usuário no estado data.
     setLogin(true); // Altera o estado login para true, ou seja, o usuário está logado.
+
     console.log(json); // Imprime os dados do usuário no console.
   }
 
@@ -79,7 +80,6 @@ export const UserStorage = ({ children }) => {
       setLoading(false); // Altera o estado loading para false, ou seja, não está carregando.
       setLogin(false); // Altera o estado login para false, ou seja, o usuário não está logado.
       window.localStorage.removeItem("token"); // Remove o token do localStorage.
-
       navigate("/login"); // Quando o usuário fizer o logout, é redirecionado para a página /login.
     },
     [navigate],

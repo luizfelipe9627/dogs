@@ -8,6 +8,10 @@ const types = {
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     message: "Preencha um email válido",
   },
+  password: {
+    regex: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/,
+    message: "A senha precisa ter 1 caracter maiúsculo, 1 minúsculo e 1 dígito. Com no mínimo 8 caracteres.",
+  },
 };
 
 // Criado um hook chamado useForm responsável por criar um estado reativo para o formulário.
@@ -23,7 +27,7 @@ const useForm = (type) => {
     if (value.length === 0) {
       setError("Preencha um valor."); // Atualiza o estado error com a mensagem "Preencha um valor.".
       return false; // Retorna false para indicar que o formulário está vazio.
-    } 
+    }
     // Se não, se o objeto types contém o tipo passado como parâmetro(o value) da função e o regex do tipo(contido no objeto types) não passar no teste do método test, retorna false.
     else if (types[type] && !types[type].regex.test(value)) {
       setError(types[type].message); // Atualiza o estado error com a mensagem do tipo de validação.
