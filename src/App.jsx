@@ -37,7 +37,7 @@ function App() {
 
             {/* Renderiza o componente Login quando a rota: /login for acessada. */}
             {/* O * está sendo usado para indicar que a rota pode ter mais de um nível, ou seja, /login/criar por exemplo. */}
-            <Route path="/login/*" element={<Login />} end />
+            <Route path="login/*" element={<Login />} end />
           </Routes>
 
           {/* O Footer é o componente que vai estár presente em todas as rotas, pois está fora do Routes. */}
