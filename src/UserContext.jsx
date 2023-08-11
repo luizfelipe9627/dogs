@@ -73,17 +73,13 @@ export const UserStorage = ({ children }) => {
   }
 
   // Criado uma função assincrona chamada userLogout responsável por fazer o logout do usuário. O async faz com que a função espere a resposta da API para continuar o código. O useCallback é responsável por memorizar a função, ou seja, se a função for recriada, ela vai ser memorizada e não vai ser recriada novamente.
-  const userLogout = React.useCallback(
-    async function () {
-      setData(null); // Altera o estado data para null, limpando os dados do usuário.
-      setError(null); // Altera o estado error para null, limpando o erro.
-      setLoading(false); // Altera o estado loading para false, ou seja, não está carregando.
-      setLogin(false); // Altera o estado login para false, ou seja, o usuário não está logado.
-      window.localStorage.removeItem("token"); // Remove o token do localStorage.
-      navigate("/login"); // Quando o usuário fizer o logout, é redirecionado para a página /login.
-    },
-    [navigate],
-  );
+  const userLogout = React.useCallback(async function () {
+    setData(null); // Altera o estado data para null, limpando os dados do usuário.
+    setError(null); // Altera o estado error para null, limpando o erro.
+    setLoading(false); // Altera o estado loading para false, ou seja, não está carregando.
+    setLogin(false); // Altera o estado login para false, ou seja, o usuário não está logado.
+    window.localStorage.removeItem("token"); // Remove o token do localStorage.
+  }, []);
 
   // Criado um useEffect que vai ser executado sempre que o componente for renderizado, nesse caso renderiza apenas uma vez.
   React.useEffect(() => {

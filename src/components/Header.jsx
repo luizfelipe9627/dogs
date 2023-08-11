@@ -16,7 +16,7 @@ import { UserContext } from "../UserContext";
 // Criado um componente chama Header.
 const Header = () => {
   // Está desestruturando o retorno do contexto UserContext, sendo data os dados do usuário.
-  const { data, userLogout } = React.useContext(UserContext); // O useContext é um hook que permite que um componente acesse o contexto e os seus dados e funcionalidades, armazenando na variável context.
+  const { data } = React.useContext(UserContext); // O useContext é um hook que permite que um componente acesse o contexto e os seus dados e funcionalidades, armazenando na variável context.
 
   return (
     <header className={styles.header}>
@@ -31,7 +31,6 @@ const Header = () => {
         {data ? (
           <Link className={styles.login} to="/conta">
             {data.nome}
-            <button onClick={userLogout}>Sair</button>
           </Link>
         ) : (
           <Link className={styles.login} to="/login">
