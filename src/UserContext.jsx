@@ -90,7 +90,7 @@ export const UserStorage = ({ children }) => {
     async function autoLogin() {
       const token = window.localStorage.getItem("token"); // Puxa o token armazenado no localStorage e armazena na constante token.
 
-      // Se o token existir, executa o if.
+      // Se o token existir executa o if, se não existir, executa o else.
       if (token) {
         // O try é um bloco de código que pode ou não gerar um erro, caso gere um erro, o catch é executado, o finally é executado sempre.
         try {
@@ -113,6 +113,8 @@ export const UserStorage = ({ children }) => {
         } finally {
           setLoading(false); // Altera o estado loading para false, ou seja, não está carregando.
         }
+      } else {
+        setLogin(false); // Altera o estado login para false, ou seja, o usuário não está logado.
       }
     }
     autoLogin(); // Executa a função autoLogin assim que o componente for renderizado.

@@ -12,9 +12,13 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Login from "./components/Login/Login";
+import User from "./components/User/User";
 
 // Importa o contexto.
 import { UserStorage } from "./UserContext";
+
+// Importa o helper.
+import ProtectedRoute from "./components/Helper/ProtectedRoute";
 
 // Criado um componente chamado App.
 function App() {
@@ -37,7 +41,19 @@ function App() {
 
             {/* Renderiza o componente Login quando a rota: /login for acessada. */}
             {/* O * está sendo usado para indicar que a rota pode ter mais de um nível, ou seja, /login/criar por exemplo. */}
-            <Route path="login/*" element={<Login />} end />
+            <Route path="login/*" element={<Login />} />
+
+            {/* Renderiza o componente User quando a rota: /conta for acessada. */}
+            {/* O * está sendo usado para indicar que a rota pode ter mais de um nível, ou seja, /conta/estatisticas por exemplo. */}
+            <Route
+              path="conta/*"
+              element={
+                // Chama o componente ProtectedRoute responsável por verificar se o usuário está logado e passa o componente User responsável por renderizar a página de usuário como filho.
+                <ProtectedRoute>
+                  <User />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
 
           {/* O Footer é o componente que vai estár presente em todas as rotas, pois está fora do Routes. */}
