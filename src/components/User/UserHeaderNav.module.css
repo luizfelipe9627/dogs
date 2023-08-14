@@ -39,3 +39,48 @@
 .nav a:global(.active) svg>* {
   fill: #FB1;
 }
+
+.mobileButton {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: #eee;
+  border-radius: .2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  transition: .1s;
+  cursor: pointer;
+}
+
+.mobileButton::after {
+  content: '';
+  display: block;
+  width: 1.2rem;
+  height: 2px;
+  /* O currentColor pega a cor do elemento, ou seja, a cor do mobileButton */
+  background: currentColor;
+  border-radius: 2px;
+  /* O box-shadow cria um efeito de duas linhas, uma em cima e outra em baixo */
+  box-shadow: 0 6px currentColor, 0 -6px currentColor;
+  transition: .2s;
+}
+
+.mobileButton:hover,
+.mobileButton:focus,
+.mobileButtonActive {
+  background-color: #fff;
+  box-shadow: 0 0 0 3px #fea;
+  border-color: #fb1;
+  outline: none;
+  color: #fb1;
+}
+
+.mobileButtonActive::after {
+  width: 4px;
+  height: 4px;
+  transform: rotate(90deg);
+  /* O box-shadow cria um efeito de duas bolinhas, uma em cima e outra em baixo, mas que por conta do rotate, ficam na lateral */
+  box-shadow: 0 8px currentColor, 0 -8 currentColor;
+}
