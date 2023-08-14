@@ -2,7 +2,7 @@
 import React from "react";
 
 // Importa o componente da biblioteca react-router-dom.
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
 
 // Importa o contexto.
 import { UserContext } from "../../UserContext";
@@ -25,7 +25,6 @@ const UserHeaderNav = () => {
   const { userLogout } = React.useContext(UserContext); // Está desestruturando o retorno da função UserContext e pegando a função userLogout e armazenando na variável userLogout.
 
   const mobile = useMedia("(max-width: 40rem)"); // Chama o hook useMedia passando como parâmetro o tamanho máximo da tela do dispositivo e armazenando na variável mobile.
-  console.log(mobile); // Imprime no console o valor da variável mobile.
 
   const [mobileMenu, setMobileMenu] = React.useState(false); // Cria um estado chamado mobileMenu, e a função setMobileMenu para alterar o estado. O valor inicial do estado é false.
 
@@ -36,6 +35,13 @@ const UserHeaderNav = () => {
     userLogout(); // Chama a função userLogout responsável por fazer o logout do usuário.
     navigate("/login"); // Quando o usuário fizer o logout, é redirecionado para a página /login.
   }
+
+  const { pathname } = useLocation(); // Desestrutura o retorno da função useLocation e pega a propriedade pathname que é a rota atual e armazena na variável pathname.
+
+  // O useEffect executará uma função toda vez que o pathname for alterado.
+  React.useEffect(() => {
+    setMobileMenu(false); // Quando o pathname for alterado, então o estado mobileMenu recebe false, o que faz com que o menu mobile seja fechado.
+  }, [pathname]); // O useEffect será executado toda vez que o pathname for alterado.
 
   return (
     <React.Fragment>
@@ -52,7 +58,13 @@ const UserHeaderNav = () => {
         ></button>
       )}
 
-      <nav className={styles.nav}>
+      {/* Se o mobile for true, adiciona a classe mobileMenuActive na nav, caso contrário, deixa a classe nav(padrão). */}
+      {/* Se o mobileMenu for true, então adiciona a classe navMobileActive na nav. */}
+      <nav
+        className={`${mobile ? styles.navMobile : styles.nav} ${
+          mobileMenu && styles.navMobileActive
+        }`}
+      >
         {/* O NavLink é responsável por adicionar uma classe ao link quando ele estiver ativo, ou seja, quando a rota for acessada. */}
         {/* Está inserindo um componente dentro de cada NavLink, responsável por renderizar as imagens. */}
         {/* O end serve para quando for clicado no NavLink, ele passe a classe active para o NavLink que foi clicado, e remova a classe active dos outros NavLink. */}

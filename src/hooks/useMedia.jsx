@@ -12,6 +12,8 @@ const useMedia = (media) => {
       const { matches } = window.matchMedia(media);
       setMatch(matches); // Altera o estado match para o valor da variável matches.
     }
+    changeMatch(); // Chama a função changeMatch para verificar o tamanho da tela do dispositivo.
+    
     window.addEventListener("resize", changeMatch); // Adiciona um evento de resize na janela do navegador, e quando o evento for disparado, chama a função changeMatch.
 
     // Quando o componente for desmontado(remove da tela), remove o evento de resize da janela do navegador, para não ficar executando o evento de resize da janela do navegador quando o componente não estiver mais na tela.
