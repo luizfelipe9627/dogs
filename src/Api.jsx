@@ -82,3 +82,15 @@ export function PHOTO_POST(formData, token) {
     },
   };
 }
+
+// Criado uma função chamada PHOTO_POST responsável por fazer a requisição para a API para criar a foto.
+export function PHOTOS_GET({ page, total, user }) {
+  return {
+    url: `${API_URL}/api/photo/?_page=${page}&_total=${total}&_user=${user}`, // Define o endereço da API que faz a requisição para puxar as fotos.
+    options: {
+      // O method é o método da requisição.
+      method: "GET", // Define o método como GET, ou seja, está puxando os dados do usuário.
+      caches: "no-store", // Define que não será armazenado em cache.
+    },
+  };
+}

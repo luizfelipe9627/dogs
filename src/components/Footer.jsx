@@ -6,7 +6,7 @@ import styles from "./Footer.module.css";
 
 // Criado um componente chama Footer.
 const Footer = () => {
-  return <footer>Footer</footer>;
+  return <footer className={styles.footer}></footer>;
 };
 
 export default Footer; // Exportando o componente Footer.

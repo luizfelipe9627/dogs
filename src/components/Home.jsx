@@ -1,9 +1,16 @@
 // Importa a biblioteca React.
 import React from "react";
 
+// Importa o componente.
+import Feed from "./Feed/Feed";
+
 // Criado um componente chama Home.
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <section className="container mainContainer">
+      <Feed />
+    </section>
+  );
 };
 
 export default Home; // Exportando o componente Home.
