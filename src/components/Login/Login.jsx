@@ -1,7 +1,7 @@
 // Importa a biblioteca React.
 import React from "react";
 
-// Importa o componente da biblioteca react-router-dom.
+// Importa o componente da biblioteca React Router DOM.
 import { Routes, Route, Navigate } from "react-router-dom";
 
 // Importa o componente.

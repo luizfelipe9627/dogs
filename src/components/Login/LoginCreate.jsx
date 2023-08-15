@@ -9,8 +9,8 @@ import Input from "../Forms/Input";
 import Button from "../Forms/Button";
 
 // Importa o hook.
-import useForm from "../../hooks/useForm";
-import useFetch from "../../hooks/useFetch";
+import useForm from "../../Hooks/useForm";
+import useFetch from "../../Hooks/useFetch";
 
 // Importa a API.
 import { USER_POST } from "../../Api";

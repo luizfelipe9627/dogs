@@ -1,7 +1,7 @@
 // Importa a biblioteca React.
 import React from "react";
 
-// Importa o componente da biblioteca react-router-dom.
+// Importa o componente da biblioteca React Router DOM.
 import { useNavigate, NavLink, useLocation } from "react-router-dom";
 
 // Importa o contexto.
@@ -28,7 +28,7 @@ const UserHeaderNav = () => {
 
   const [mobileMenu, setMobileMenu] = React.useState(false); // Cria um estado chamado mobileMenu, e a função setMobileMenu para alterar o estado. O valor inicial do estado é false.
 
-  const navigate = useNavigate(); // Armazena a função useNavigate da biblioteca react-router-dom na variável navigate. O useNavigate é responsável por fazer a navegação entre as páginas.
+  const navigate = useNavigate(); // Armazena a função useNavigate da biblioteca React Router DOM na variável navigate. O useNavigate é responsável por fazer a navegação entre as páginas.
 
   // Criado uma função chamada handleLogout responsável por fazer o logout do usuário.
   function handleLogout() {

@@ -4,7 +4,7 @@ import React from "react";
 // Importa o contexto.
 import { UserContext } from "../../UserContext";
 
-// Importa o componente da biblioteca react-router-dom.
+// Importa o componente da biblioteca React Router DOM.
 import { Navigate } from "react-router-dom";
 
 // Criado um componente chamado ProtectedRoute que recebe uma propriedade chamada children.

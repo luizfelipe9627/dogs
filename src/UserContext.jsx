@@ -1,7 +1,7 @@
 // Importa a biblioteca React.
 import React from "react";
 
-// Importa o componente da biblioteca react-router-dom.
+// Importa o componente da biblioteca React Router DOM.
 import { useNavigate } from "react-router-dom";
 
 // Importa os dados da API.
@@ -16,7 +16,7 @@ export const UserStorage = ({ children }) => {
   const [loading, setLoading] = React.useState(false); // Criado um estado chamado loading e uma função chamada setLoading para alterar o estado. O valor inicial do estado é false.
   const [error, setError] = React.useState(null); // Criado um estado chamado error e uma função chamada setError para alterar o estado. O valor inicial do estado é null.
 
-  const navigate = useNavigate(); // Armazena a função useNavigate da biblioteca react-router-dom na variável navigate. O useNavigate é responsável por fazer a navegação entre as páginas.
+  const navigate = useNavigate(); // Armazena a função useNavigate da biblioteca React Router DOM na variável navigate. O useNavigate é responsável por fazer a navegação entre as páginas.
 
   // Criado uma função assincrona chamada getUser responsável por puxar os dados do usuário da API. O async faz com que a função espere a resposta da API para continuar o código.
   async function getUser(token) {

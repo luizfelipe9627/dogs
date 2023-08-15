@@ -43,7 +43,7 @@ export function USER_GET(token) {
       // O headers é um objeto que contém os cabeçalhos da requisição.
       headers: {
         // O cabeçalho Authorization informa que o corpo da requisição é um token.
-        Authorization: 'Bearer ' + token, // Define o cabeçalho como Bearer + token, ou seja, o corpo da requisição é um token.
+        Authorization: "Bearer " + token, // Define o cabeçalho como Bearer + token, ou seja, o corpo da requisição é um token.
       },
     },
   };
@@ -62,6 +62,23 @@ export function USER_POST(body) {
         "Content-Type": "application/json", // Define o cabeçalho como application/json, ou seja, o corpo da requisição é um objeto JSON.
       },
       body: JSON.stringify(body), // Define o corpo da requisição com o método JSON.stringify que transforma o objeto passado no parâmetro body em uma string JSON.
+    },
+  };
+}
+
+// Criado uma função chamada PHOTO_POST responsável por fazer a requisição para a API para criar a foto.
+export function PHOTO_POST(formData, token) {
+  return {
+    url: API_URL + "/api/photo", // Define o endereço da API que faz a requisição para criar a foto.
+    options: {
+      // O method é o método da requisição.
+      method: "POST", // Define o método como POST, ou seja, está enviando os dados para a API.
+      // O headers é um objeto que contém os cabeçalhos da requisição.
+      headers: {
+        // O cabeçalho Authorization informa que o corpo da requisição é um token.
+        Authorization: "Bearer " + token, // Define o cabeçalho como Bearer + token, ou seja, o corpo da requisição é um token.
+      },
+      body: formData, // Define o corpo da requisição com o formData que contém os dados da foto que será enviada para a API.
     },
   };
 }
