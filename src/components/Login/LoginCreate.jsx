@@ -1,9 +1,6 @@
 // Importa a biblioteca React.
 import React from "react";
 
-// Importa os CSS Module.
-import styles from "./LoginCreate.module.css";
-
 // Importa o componente.
 import Input from "../Forms/Input";
 import Button from "../Forms/Button";
