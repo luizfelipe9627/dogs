@@ -36,7 +36,11 @@ const useFetch = () => {
     }
   }, []);
 
-  // Retorna um objeto com os estados data, error, loading e a função request.
+  // Retorna um objeto com os estados data, error, loading e a função request:
+  // O estado data é responsável por armazenar os dados da resposta da API. 
+  // O estado error é responsável por armazenar a mensagem de erro da API. 
+  // O estado loading é responsável por armazenar o estado da requisição. 
+  // A função request é responsável por fazer a requisição para a API.
   return { data, error, loading, request };
 };
 

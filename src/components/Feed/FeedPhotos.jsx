@@ -5,7 +5,7 @@ import React from "react";
 import FeedPhotosItem from "./FeedPhotosItem";
 
 // Importa o hook.
-import useFetch from "../../Hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 
 // Importa a API.
 import { PHOTOS_GET } from "../../Api";
@@ -17,8 +17,8 @@ import Loading from "../Helper/Loading";
 // Importa o CSS Module.
 import styles from "./FeedPhotos.module.css";
 
-// Cria um componente chamado FeedPhotos.
-const FeedPhotos = () => {
+// Cria um componente chamado FeedPhotos que recebe as props setModalPhoto do arquivo Feed.jsx.
+const FeedPhotos = ({ setModalPhoto }) => {
   const { data, loading, error, request } = useFetch(); // Desestrutura o retorno da função useFetch e armazena a resposta da API nas constantes data, loading, error e request.
 
   // O useEffect executa quando o componente for renderizado na tela e toda vez que o request mudar.
@@ -34,8 +34,8 @@ const FeedPhotos = () => {
 
       // Desestrutura o retorno da função request e armazena a resposta da API já convertida na constante json. A função request recebe a url que é a url da API e options que são as opções da requisição.
       const { json } = await request(url, options); // O await faz com que a função espere a resposta da API para continuar o código.
-      console.log(json); // Exibe no console a resposta da API e o retorno da API.
     }
+    
     fetchPhotos(); // Executa a função fetchPhotos.
   }, [request]);
 
@@ -49,9 +49,15 @@ const FeedPhotos = () => {
   if (data) {
     return (
       <ul className={`${styles.feed} animaLeft`}>
-        {/* Percorre o array data e retorna o componente FeedPhotosItem com as props key e photo. */}
+        {/* Percorre o array data e retorna o componente FeedPhotosItem com as props e seus valores. */}
         {data.map((photo) => (
-          <FeedPhotosItem key={photo.id} photo={photo} />
+          <FeedPhotosItem
+            key={photo.id}
+            // Está passando a foto como prop para o componente FeedPhotosItem.
+            photo={photo}
+            // Está passando a função setModalPhoto como prop para o componente FeedPhotosItem.
+            setModalPhoto={setModalPhoto}
+          />
         ))}
       </ul>
     );
