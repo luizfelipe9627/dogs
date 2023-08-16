@@ -9,8 +9,8 @@ import Input from "../Forms/Input";
 import Button from "../Forms/Button";
 
 // Importa os hooks.
-import useForm from "../../Hooks/useForm";
-import useFetch from "../../Hooks/useFetch";
+import useForm from "../../hooks/useForm";
+import useFetch from "../../hooks/useFetch";
 
 // Importa o componente da biblioteca React Router DOM.
 import { useNavigate } from "react-router-dom";

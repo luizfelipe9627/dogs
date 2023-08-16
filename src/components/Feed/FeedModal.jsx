@@ -44,7 +44,7 @@ const FeedModal = ({ photo }) => {
       {/* Se o estado loading for true, renderiza o componente Loading. */}
       {loading && <Loading />}
       {/* Se o estado data for true, renderiza o componente PhotoContent passando a propriedade data que recebe o estado data. */}
-      {data && <PhotoContent data={data}/>}
+      {data && <PhotoContent data={data} />}
     </div>
   );
 };
