@@ -4,7 +4,7 @@ import React from "react";
 // Importa o componente.
 import Feed from "./Feed/Feed";
 
-// Criado um componente chama Home.
+// Criado um componente chamado Home.
 const Home = () => {
   return (
     <section className="container mainContainer">

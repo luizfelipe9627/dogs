@@ -45,7 +45,7 @@ const LoginCreate = () => {
 
     // Se a resposta da API for ok, ou seja, se o usuário for criado com sucesso, executa o if e faz o login do usuário.
     if (response.ok) {
-      userLogin(username.value, password.value); // Chama a função userLogin que é responsável por fazer o login do usuário e passa o username e o password como parâmetro.
+      userLogin(username.value, password.value); // chamado a função userLogin que é responsável por fazer o login do usuário e passa o username e o password como parâmetro.
     }
   }
 

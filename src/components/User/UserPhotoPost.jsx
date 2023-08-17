@@ -58,7 +58,7 @@ const UserPhotoPost = () => {
 
     const token = window.localStorage.getItem("token"); // Cria uma constante token que recebe o token armazenado no localStorage.
 
-    const { url, options } = PHOTO_POST(formData, token); // Está desestruturando o objeto retornado pela função PHOTO_POST e passando para as constantes url e options. Chama o método PHOTO_POST passando como parâmetro o objeto formData e o token.
+    const { url, options } = PHOTO_POST(formData, token); // Está desestruturando o objeto retornado pela função PHOTO_POST e passando para as constantes url e options. chamado o método PHOTO_POST passando como parâmetro o objeto formData e o token.
 
     request(url, options); // Está chamando a função request passando como parâmetro a constante url e options.
   }

@@ -4,7 +4,7 @@ import React from "react";
 // Importa o CSS Module.
 import styles from "./Footer.module.css";
 
-// Criado um componente chama Footer.
+// Criado um componente chamado Footer.
 const Footer = () => {
   return <footer className={styles.footer}></footer>;
 };

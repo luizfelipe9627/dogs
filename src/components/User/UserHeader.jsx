@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 
 // Criado um componente chamado UserHeader.
 const UserHeader = () => {
-  const [title, setTitle] = React.useState(""); // Cria um estado chama title e uma função atualizadora chamada setTitle. O valor inicial é uma string vazia.
+  const [title, setTitle] = React.useState(""); // Cria um estado chamado title e uma função atualizadora chamada setTitle. O valor inicial é uma string vazia.
   const { pathname } = useLocation(); // Desestrutura o useLocation pega o que está dentro do pathname e atribui a variável pathname.
 
   // Executa o useEffect quando o componente for montado e quando o location.pathname(que é o caminho da URL) for alterado.

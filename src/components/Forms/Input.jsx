@@ -4,7 +4,7 @@ import React from "react";
 // Importa o CSS Module.
 import styles from "./Input.module.css";
 
-// Criado um componente chama Input que está recebendo as props label, type e name.
+// Criado um componente chamado Input que está recebendo as props label, type e name.
 const Input = ({ label, type, name, value, onChange, onBlur, error }) => {
   // Retorna uma div que contém um label e um input.
   return (

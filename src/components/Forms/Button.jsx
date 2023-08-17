@@ -4,7 +4,7 @@ import React from "react";
 // Importa o CSS Module.
 import styles from "./Button.module.css";
 
-// Criado um componente chama Button que está recebendo a props children desestruturada e o resto das props com o spread operator(...).
+// Criado um componente chamado Button que está recebendo a props children desestruturada e o resto das props com o spread operator(...).
 const Button = ({ children, ...props }) => {
   // Retorna um button.
   return (

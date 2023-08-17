@@ -48,7 +48,7 @@ function App() {
             <Route
               path="conta/*"
               element={
-                // Chama o componente ProtectedRoute responsável por verificar se o usuário está logado e passa o componente User responsável por renderizar a página de usuário como filho.
+                // chamado o componente ProtectedRoute responsável por verificar se o usuário está logado e passa o componente User responsável por renderizar a página de usuário como filho.
                 <ProtectedRoute>
                   <User />
                 </ProtectedRoute>

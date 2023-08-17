@@ -16,7 +16,7 @@ import { UserContext } from "../../UserContext";
 // Importa os CSS Modules.
 import styles from "./Login.module.css";
 
-// Criado um componente chama Login.
+// Criado um componente chamado Login.
 const Login = () => {
   const { login } = React.useContext(UserContext); // Puxa o estado login do contexto UserContext e armazena na variável login.
 

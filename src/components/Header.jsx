@@ -13,7 +13,7 @@ import { ReactComponent as Dogs } from "../assets/svg/dogs.svg";
 // Importa o contexto.
 import { UserContext } from "../UserContext";
 
-// Criado um componente chama Header.
+// Criado um componente chamado Header.
 const Header = () => {
   // Está desestruturando o retorno do contexto UserContext, sendo data os dados do usuário.
   const { data } = React.useContext(UserContext); // O useContext é um hook que permite que um componente acesse o contexto e os seus dados e funcionalidades, armazenando na variável context.

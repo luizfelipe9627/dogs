@@ -11,7 +11,7 @@ const FeedPhotosItem = ({ photo, setModalPhoto }) => {
   }
 
   return (
-    // Cria uma tag li que recebe a propriedade className com o valor de styles.photo e um evento de clique que ao ser acionado chama a função handleClick.
+    // Cria uma tag li que recebe a propriedade className com o valor de styles.photo e um evento de clique que ao ser acionado chamado a função handleClick.
     <li className={styles.photo} onClick={handleClick}>
       {/* Cria uma tag img que recebe a propriedade src(caminho da foto) e alt(texto alternativo) criado na API. */}
       <img src={photo.src} alt={photo.title} />

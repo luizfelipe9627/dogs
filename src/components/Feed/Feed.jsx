@@ -11,8 +11,8 @@ const Feed = () => {
 
   return (
     <div>
-      {/* Se o modalPhoto for true, renderiza o FeedModal e passa a prop photo com o valor de modalPhoto. */}
-      {modalPhoto && <FeedModal photo={modalPhoto}/>}
+      {/* Se o modalPhoto for true, renderiza o FeedModal e passa a prop photo com o valor de modalPhoto e a prop setModalPhoto com a função atualizadora setModalPhoto. */}
+      {modalPhoto && <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto}/>}
       {/* Renderiza o FeedPhotos e passa a prop setModalPhoto com a função atualizadora setModalPhoto. */}
       <FeedPhotos setModalPhoto={setModalPhoto} />
     </div>

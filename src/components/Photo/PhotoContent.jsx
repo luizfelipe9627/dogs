@@ -10,7 +10,7 @@ import styles from "./PhotoContent.module.css";
 // Importa o componente.
 import PhotoComments from "./PhotoComments";
 
-// Cria um componente chama PhotoContent que recebe a propriedade data.
+// Cria um componente chamado PhotoContent que recebe a propriedade data.
 const PhotoContent = ({ data }) => {
   const { photo, comments } = data; // Desestrutura a propriedade data puxando as propriedades photo e comments.
 
@@ -21,7 +21,7 @@ const PhotoContent = ({ data }) => {
       </div>
       <div className={styles.details}>
         <div>
-          <p>
+          <p className={styles.author}>
             {/* Cria um link para o perfil do usuário que postou a foto. */}
             <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
             {/* Exibe o total de visualizações da foto. */}
@@ -40,7 +40,7 @@ const PhotoContent = ({ data }) => {
           </ul>
         </div>
       </div>
-      {/* Chama o componente PhotoComments passando as propriedades id e comments. */}
+      {/* chamado o componente PhotoComments passando as propriedades id e comments. */}
       {/* Passa a propriedade single com o valor false para que o componente PhotoComments saiba que não é uma foto única. */}
       <PhotoComments id={photo.id} comments={comments} single={false} />
     </div>

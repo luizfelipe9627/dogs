@@ -24,7 +24,7 @@ const UserHeaderNav = () => {
   // O useContext é um hook que permite que um componente acesse o contexto e os seus dados e funcionalidades, armazenando na variável context.
   const { userLogout } = React.useContext(UserContext); // Está desestruturando o retorno da função UserContext e pegando a função userLogout e armazenando na variável userLogout.
 
-  const mobile = useMedia("(max-width: 40rem)"); // Chama o hook useMedia passando como parâmetro o tamanho máximo da tela do dispositivo e armazenando na variável mobile.
+  const mobile = useMedia("(max-width: 40rem)"); // chamado o hook useMedia passando como parâmetro o tamanho máximo da tela do dispositivo e armazenando na variável mobile.
 
   const [mobileMenu, setMobileMenu] = React.useState(false); // Cria um estado chamado mobileMenu, e a função setMobileMenu para alterar o estado. O valor inicial do estado é false.
 
@@ -32,7 +32,7 @@ const UserHeaderNav = () => {
 
   // Criado uma função chamada handleLogout responsável por fazer o logout do usuário.
   function handleLogout() {
-    userLogout(); // Chama a função userLogout responsável por fazer o logout do usuário.
+    userLogout(); // chamado a função userLogout responsável por fazer o logout do usuário.
     navigate("/login"); // Quando o usuário fizer o logout, é redirecionado para a página /login.
   }
 
@@ -53,7 +53,7 @@ const UserHeaderNav = () => {
           className={`${styles.mobileButton} ${
             mobileMenu && styles.mobileButtonActive
           }`}
-          // Adicionado um evento de click no button, e quando o evento for disparado, chama a função setMobileMenu passando como parâmetro o contrário do valor atual do estado mobileMenu, ou seja, se o valor atual do estado mobileMenu for true, então o valor passado para a função setMobileMenu será false, e vice-versa.
+          // Adicionado um evento de click no button, e quando o evento for disparado, chamado a função setMobileMenu passando como parâmetro o contrário do valor atual do estado mobileMenu, ou seja, se o valor atual do estado mobileMenu for true, então o valor passado para a função setMobileMenu será false, e vice-versa.
           onClick={() => setMobileMenu(!mobileMenu)}
         ></button>
       )}

@@ -16,9 +16,10 @@ import Loading from "../Helper/Loading";
 
 // Importa o CSS Module.
 import styles from "./FeedModal.module.css";
+import { func } from "prop-types";
 
 // Cria um componente chamado FeedModal que recebe a propriedade photo.
-const FeedModal = ({ photo }) => {
+const FeedModal = ({ photo, setModalPhoto }) => {
   const [modal, setModal] = React.useState(null); // Cria um estado chamado modal e uma função setModal para alterar o estado. Inicia o estado com null.
 
   const { data, loading, error, request } = useFetch(); // Desestrutura o retorno da função useFetch e armazena a resposta da API nas constantes data, loading, error e request.
@@ -37,8 +38,17 @@ const FeedModal = ({ photo }) => {
     fetchPhoto(); // Executa a função fetchPhoto.
   }, [photo, request]);
 
+  // Função chamada handleOutsideClick que recebe o evento como parâmetro e que é responsável por fechar o modal quando o usuário clicar fora dele.
+  function handleOutsideClick(event) {
+    // Se o target(elemento clicado) for igual ao currentTarget(elemento que está recebendo o evento), então executa o if.
+    if (event.target === event.currentTarget) {
+      setModalPhoto(null); // Altera o estado modalPhoto para null fazendo com que o modal seja fechado.
+    }
+  }
+
   return (
-    <div className={styles.modal}>
+    // Cria um elemento div com a classe modal e o evento onClick que executa a função handleOutsideClick.
+    <div className={styles.modal} onClick={handleOutsideClick}>
       {/* Se o estado error for true, renderiza o componente Error passando a propriedade error que recebe o estado error com a mensagem de erro da API. */}
       {error && <Error error={error} />}
       {/* Se o estado loading for true, renderiza o componente Loading. */}

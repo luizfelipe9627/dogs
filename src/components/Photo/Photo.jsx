@@ -1,7 +1,7 @@
 // Importa a biblioteca React.
 import React from "react";
 
-// Cria um componente chama Photo.
+// Cria um componente chamado Photo.
 const Photo = () => {
   return <div>Photo</div>;
 };
