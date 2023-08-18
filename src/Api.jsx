@@ -33,10 +33,10 @@ export function TOKEN_VALIDATE_POST(token) {
   };
 }
 
-// Criado uma função chamada USER_GET responsável por fazer a requisição para a API para pegar os dados do usuário.
+// Criado uma função chamada USER_GET responsável por fazer a requisição para a API para puxar os dados do usuário.
 export function USER_GET(token) {
   return {
-    url: API_URL + "/api/user", // Define o endereço da API que faz a requisição para pegar os dados do usuário.
+    url: API_URL + "/api/user", // Define o endereço da API que faz a requisição para puxar os dados do usuário.
     options: {
       // O method é o método da requisição.
       method: "GET", // Define o método como GET, ou seja, está puxando os dados do usuário.
@@ -52,7 +52,7 @@ export function USER_GET(token) {
 // Criado uma função chamada USER_POST responsável por fazer a requisição para a API para criar o usuário.
 export function USER_POST(body) {
   return {
-    url: API_URL + "/api/user", // Define o endereço da API que faz a requisição para criar o usuário.
+    url: API_URL + "/api/user", // Define o endereço da API que faz a requisição para enviar o usuário criado.
     options: {
       // O method é o método da requisição.
       method: "POST", // Define o método como POST, ou seja, está enviando os dados para a API.
@@ -69,7 +69,7 @@ export function USER_POST(body) {
 // Criado uma função chamada PHOTO_POST responsável por fazer a requisição para a API para criar a foto.
 export function PHOTO_POST(formData, token) {
   return {
-    url: API_URL + "/api/photo", // Define o endereço da API que faz a requisição para criar a foto.
+    url: API_URL + "/api/photo", // Define o endereço da API que faz a requisição para enviar a foto.
     options: {
       // O method é o método da requisição.
       method: "POST", // Define o método como POST, ou seja, está enviando os dados para a API.
@@ -95,14 +95,35 @@ export function PHOTOS_GET({ page, total, user }) {
   };
 }
 
-// Criado uma função chamada PHOTO_GET responsável por fazer a requisição para a API para pegar os dados da foto.
+// Criado uma função chamada PHOTO_GET responsável por fazer a requisição para a API para puxar os dados da foto.
 export function PHOTO_GET(id) {
   return {
-    url: `${API_URL}/api/photo/${id}`, // Define o endereço da API que faz a requisição para pegar os dados da foto.
+    url: `${API_URL}/api/photo/${id}`, // Define o endereço da API que faz a requisição para puxar os dados da foto.
     options: {
       // O method é o método da requisição.
       method: "GET", // Define o método como GET, ou seja, está puxando os dados do usuário.
       caches: "no-store", // Define que não será armazenado em cache.
+    },
+  };
+}
+
+// Criado uma função chamada COMMENT_PHOST responsável por fazer a requisição para a API para enviar o comentário.
+export function COMMENT_PHOST(id, body) {
+  return {
+    url: `${API_URL}/api/comment/${id}`, // Define o endereço da API que faz a requisição para enviar o comentário.
+    options: {
+      // O method é o método da requisição.
+      method: "POST", // Define o método como POST, ou seja, está enviando os dados para a API.
+
+      // O headers é um objeto que contém os cabeçalhos da requisição.
+      headers: {
+        // O cabeçalho Content-Type informa o tipo de conteúdo que está sendo enviado no corpo da requisição.
+        "Content-Type": "application/json", // Define o cabeçalho como application/json, ou seja, o corpo da requisição é um objeto JSON.
+        // O cabeçalho Authorization informa que o corpo da requisição é um token.
+        Authorization: "Bearer " + window.localStorage.getItem("token"), // Define o cabeçalho como Bearer + token, ou seja, o corpo da requisição é um token que está sendo pego do localStorage.
+      },
+
+      body: JSON.stringify(body), // Define o corpo da requisição com o método JSON.stringify que transforma o objeto passado no parâmetro body em uma string JSON.
     },
   };
 }

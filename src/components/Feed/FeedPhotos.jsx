@@ -32,8 +32,8 @@ const FeedPhotos = ({ setModalPhoto }) => {
         user: 0, // Usuário.
       });
 
-      // Desestrutura o retorno da função request e armazena a resposta da API já convertida na constante json. A função request recebe a url que é a url da API e options que são as opções da requisição.
-      const { json } = await request(url, options); // O await faz com que a função espere a resposta da API para continuar o código.
+      // A função request recebe a url que é a url da API e options que são as opções da requisição.
+      await request(url, options); // O await faz com que a função espere a resposta da API para continuar o código.
     }
 
     fetchPhotos(); // Executa a função fetchPhotos.

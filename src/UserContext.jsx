@@ -31,8 +31,6 @@ export const UserStorage = ({ children }) => {
     const json = await response.json(); // Transforma a resposta da requisição em um objeto JSON e armazena na constante json quando a resposta chegar.
     setData(json); // Armazena os dados do usuário no estado data.
     setLogin(true); // Altera o estado login para true, ou seja, o usuário está logado.
-
-    console.log(json); // Imprime os dados do usuário no console.
   }
 
   // Criado uma função assincrona chamada userLogin responsável por fazer o envio dos dados do formulário para a API. O async faz com que a função espere a resposta da API para continuar o código.

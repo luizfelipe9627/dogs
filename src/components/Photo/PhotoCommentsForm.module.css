@@ -1,0 +1,19 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: stretch;
+  margin: 1rem;
+}
+
+.textarea {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  font-family: var(--type-first);
+  resize: none;
+  border: 1px solid #eee;
+  padding: .5rem;
+  border-radius: .2rem;
+  background-color: #eee;
+  transition: .2s;
+}

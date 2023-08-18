@@ -13,11 +13,9 @@ const PhotoGet = () => {
     fetch(`https://dogsapi.origamid.dev/json/api/photo/${id}`)
       // O método fetch retorna uma Promise, então é possível encadear o método then para pegar a resposta da requisição.
       .then((response) => {
-        console.log(response);
         return response.json(); // Retorna o corpo da resposta como JSON.
       })
       .then((json) => {
-        console.log(json);
         return json; // Retorna o corpo da resposta como JSON.
       });
   }

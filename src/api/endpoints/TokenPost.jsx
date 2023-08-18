@@ -27,12 +27,10 @@ const TokenPost = () => {
     })
       // O método fetch retorna uma Promise, então é possível encadear o método then para pegar a resposta da requisição.
       .then((response) => {
-        console.log(response);
         return response.json(); // Retorna o corpo da resposta como JSON.
       })
       // Atráves do then anterior, é possível encadear outro then para pegar o JSON retornado pelo then anterior.
       .then((json) => {
-        console.log(json);
         setToken(json.token); // Atualiza o estado token com o valor do token retornado pela API.
         return json; // Retorna o corpo da resposta como JSON.
       });
