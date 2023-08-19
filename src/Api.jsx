@@ -107,8 +107,8 @@ export function PHOTO_GET(id) {
   };
 }
 
-// Criado uma função chamada COMMENT_PHOST responsável por fazer a requisição para a API para enviar o comentário.
-export function COMMENT_PHOST(id, body) {
+// Criado uma função chamada COMMENT_POST responsável por fazer a requisição para a API para enviar o comentário.
+export function COMMENT_POST(id, body) {
   return {
     url: `${API_URL}/api/comment/${id}`, // Define o endereço da API que faz a requisição para enviar o comentário.
     options: {
@@ -124,6 +124,23 @@ export function COMMENT_PHOST(id, body) {
       },
 
       body: JSON.stringify(body), // Define o corpo da requisição com o método JSON.stringify que transforma o objeto passado no parâmetro body em uma string JSON.
+    },
+  };
+}
+
+// Criado uma função chamada PHOTO_DELETE responsável por fazer a requisição para a API para deletar a foto.
+export function PHOTO_DELETE(id) {
+  return {
+    url: `${API_URL}/api/photo/${id}`, // Define o endereço da API que faz a requisição para enviar o comentário.
+    options: {
+      // O method é o método da requisição.
+      method: "DELETE", // Define o método como DELETE, ou seja, está deletando os dados para a API.
+
+      // O headers é um objeto que contém os cabeçalhos da requisição.
+      headers: {
+        // O cabeçalho Authorization informa que o corpo da requisição é um token.
+        Authorization: "Bearer " + window.localStorage.getItem("token"), // Define o cabeçalho como Bearer + token, ou seja, o corpo da requisição é um token que está sendo pego do localStorage.
+      },
     },
   };
 }

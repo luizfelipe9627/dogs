@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom";
 
 // Criado um componente chamado ProtectedRoute que recebe uma propriedade chamada children.
 const ProtectedRoute = ({ children }) => {
-  const { login } = React.useContext(UserContext); // Desestrutura o retorno da função UserContext e armazena a função login na constante login. O UserContext é responsável por acessar o contexto que foi criado no arquivo UserContext.jsx.
+  const { login } = React.useContext(UserContext); // Desestrutura o retorno da função UserContext e armazena a função login na constante login. O login é responsável por retornar se o usuário está logado ou não.
 
   // Verifica se o login é true, ou seja, se o usuário está logado, se for executa o if.
   if (login === true) {

@@ -1,6 +1,9 @@
 // Importa a biblioteca React.
 import React from "react";
 
+// Importa o helper.
+import Image from "../Helper/Image";
+
 // Importa o CSS Module.
 import styles from "./FeedPhotosItem.module.css";
 
@@ -13,8 +16,8 @@ const FeedPhotosItem = ({ photo, setModalPhoto }) => {
   return (
     // Cria uma tag li que recebe a propriedade className com o valor de styles.photo e um evento de clique que ao ser acionado chamado a função handleClick.
     <li className={styles.photo} onClick={handleClick}>
-      {/* Cria uma tag img que recebe a propriedade src(caminho da foto) e alt(texto alternativo) criado na API. */}
-      <img src={photo.src} alt={photo.title} />
+      {/* Renderiza o componente Image passando as propriedades src e alt. */}
+      <Image src={photo.src} alt={photo.title} />
       {/* Cria uma tag span que recebe a propriedade acessos criado na API. */}
       <span className={styles.views}>{photo.acessos}</span>
     </li>

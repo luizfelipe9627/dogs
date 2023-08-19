@@ -14,7 +14,7 @@ import useFetch from "../../hooks/useFetch";
 import { ReactComponent as Enviar } from "../../assets/svg/enviar.svg";
 
 // Importa a api.
-import { COMMENT_PHOST } from "../../Api";
+import { COMMENT_POST } from "../../Api";
 
 // Importa o helper.
 import Error from "../Helper/Error";
@@ -28,7 +28,7 @@ const PhotoCommentsForm = ({ id, setComments }) => {
   async function handleSubmit(event) {
     event.preventDefault(); // Previne o comportamento padrão do formulário que é enviar os dados para uma outra página e recarregar a página.
 
-    const { url, options } = COMMENT_PHOST(id, { comment }); // Está desestruturando o retorno da função COMMENT_PHOST pegando apenas o que vai ser utilizado(no caso a url e options) nas constantes url e options e passando como parâmetro da função o id da foto e o comentário digitado pelo usuário em um objeto.
+    const { url, options } = COMMENT_POST(id, { comment }); // Está desestruturando o retorno da função COMMENT_POST pegando apenas o que vai ser utilizado(no caso a url e options) nas constantes url e options e passando como parâmetro da função o id da foto e o comentário digitado pelo usuário em um objeto.
 
     // Desestrutura o retorno da função request armazenando a response que armazena o resultado do fetch e o json que armazena a resposta convertida em json nas constantes response e json. A função request recebe a url que é a url da API e options que são as opções da requisição.
     const { response, json } = await request(url, options); // O await faz com que a função espere a resposta da API
@@ -43,7 +43,6 @@ const PhotoCommentsForm = ({ id, setComments }) => {
     <form className={styles.form} onSubmit={handleSubmit}>
       {/* Chama o componente Textarea passando as propriedades name, value, placeholder e onChange como parâmetro. */}
       <Textarea
-        className={styles.textarea}
         name="comment"
         id="comment"
         value={comment}
