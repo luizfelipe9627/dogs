@@ -24,7 +24,7 @@ const FeedPhotos = ({ setModalPhoto }) => {
   // O useEffect executa quando o componente for renderizado na tela e toda vez que o request mudar.
   React.useEffect(() => {
     // Criado uma função chamada fetchPhotos responsável por fazer a requisição das fotos da API. O async faz com que a função espere a resposta da API para continuar o código.a
-    async function fetchPhotos(event) {
+    async function fetchPhotos() {
       // Desestrutura o retorno da função PHOTO_GET e armazena a url e options nas constantes url e options. A função PHOTOS_GET recebe um objeto vazio.
       const { url, options } = PHOTOS_GET({
         page: 1, // Página inicial.

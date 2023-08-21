@@ -20,9 +20,9 @@ import { UserContext } from "../../UserContext";
 // Cria um componente chamado PhotoContent que recebe a propriedade data.
 const PhotoContent = ({ data }) => {
   const { photo, comments } = data; // Desestrutura a propriedade data puxando as propriedades photo e comments.
-
+  
   const user = React.useContext(UserContext); // Armazena o contexto UserContext na variável user, dando acesso a todas as propriedades e métodos do contexto, sendo elas: data, login, userLogout, userLogin e userRegister.
-
+  
   return (
     <div className={styles.photo}>
       <div className={styles.img}>  
