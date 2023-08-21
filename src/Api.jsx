@@ -90,7 +90,7 @@ export function PHOTOS_GET({ page, total, user }) {
     options: {
       // O method é o método da requisição.
       method: "GET", // Define o método como GET, ou seja, está puxando os dados do usuário.
-      caches: "no-store", // Define que não será armazenado em cache.
+      cache: "no-store", // Define que não será armazenado em cache.
     },
   };
 }
@@ -102,7 +102,7 @@ export function PHOTO_GET(id) {
     options: {
       // O method é o método da requisição.
       method: "GET", // Define o método como GET, ou seja, está puxando os dados do usuário.
-      caches: "no-store", // Define que não será armazenado em cache.
+      cache: "no-store", // Define que não será armazenado em cache.
     },
   };
 }

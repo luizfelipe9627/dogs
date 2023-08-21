@@ -87,7 +87,6 @@ const UserPhotoPost = () => {
           id="img"
           onChange={handleImgChange}
         />
-        {/* Está chamando o componente Button e passando a propriedade children que é o texto do botão. */}
 
         {/* Está verificando se o estado loading é verdadeiro, se for, então renderiza o Button com o texto "Enviando..." e desabilita o botão, caso contrário, renderiza o Button com o texto "Enviar" que é o texto padrão. */}
         {loading ? (

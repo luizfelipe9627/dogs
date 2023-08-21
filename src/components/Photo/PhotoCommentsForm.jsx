@@ -32,7 +32,7 @@ const PhotoCommentsForm = ({ id, setComments }) => {
 
     // Desestrutura o retorno da função request armazenando a response que armazena o resultado do fetch e o json que armazena a resposta convertida em json nas constantes response e json. A função request recebe a url que é a url da API e options que são as opções da requisição.
     const { response, json } = await request(url, options); // O await faz com que a função espere a resposta da API
-    console.log(json)
+
     if (response.ok) {
       setComment(""); // Limpa o textarea após o comentário ser enviado.
       setComments((comments) => [...comments, json]); // Atualiza o estado comments pegando todos os comentários já existentes e adicionando o novo comentário digitado pelo usuário que está armazenado na constante json.

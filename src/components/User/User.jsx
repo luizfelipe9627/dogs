@@ -5,7 +5,7 @@ import React from "react";
 import UserHeader from "./UserHeader";
 import Feed from "../Feed/Feed";
 import UserPhotoPost from "./UserPhotoPost";
-import UserStats from "./UserStatis";
+import UserStats from "./UserStats";
 
 // Importa os componenetes da biblioteca React Router DOM.
 import { Routes, Route } from "react-router-dom";

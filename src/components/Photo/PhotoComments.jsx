@@ -12,11 +12,11 @@ import styles from "./PhotoComments.module.css";
 
 // Cria um componente chamado PhotoComments que recebe como parâmetro as propriedades comments e id.
 const PhotoComments = (props) => {
-  const { login } = React.useContext(UserContext); // Desestrutura o retorno da função useContext pegando apenas o login e armazena na constante login.
+  const [comments, setComments] = React.useState(() => props.comments); // Cria um estado para armazenar os comentários e a função para atualizar o estado chamado setComments. O estado inicial é o valor das propriedades comments.
 
   const commentsSection = React.useRef(null); // Cria uma referência para o elemento commentsSection. O valor inicial é null.
 
-  const [comments, setComments] = React.useState(() => props.comments); // Cria um estado para armazenar os comentários e a função para atualizar o estado chamado setComments. O estado inicial é o valor das propriedades comments.
+  const { login } = React.useContext(UserContext); // Desestrutura o retorno da função useContext pegando apenas o login e armazena na constante login.
 
   // O useEffect é executado quando o componente é renderizado e sempre que o estado comments for atualizado.
   React.useEffect(() => {

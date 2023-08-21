@@ -25,7 +25,7 @@ const useForm = (type) => {
   const [error, setError] = React.useState(null); // Cria um estado chamado error e uma função para atualizar esse estado chamada setError. O valor inicial do estado é nulo(null).
 
   // Criado uma função chamada validate responsável por validar o formulário e atualizar o estado error.
-  function validate() {
+  function validate(value) {
     // Se o tipo for falso, ou seja vazio, retorna true fazendo com que o formulário não seja validado.
     if (type === false) return true;
     // Se o valor do estado value for igual a 0, retorna true ou seja, o formulário está vazio.

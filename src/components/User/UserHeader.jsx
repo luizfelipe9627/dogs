@@ -6,6 +6,8 @@ import UserHeaderNav from "./UserHeaderNav";
 
 // Importa o CSS Module.
 import styles from "./UserHeader.module.css";
+
+// Importa o componente da biblioteca react-router-dom.
 import { useLocation } from "react-router-dom";
 
 // Criado um componente chamado UserHeader.
