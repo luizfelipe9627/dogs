@@ -9,6 +9,7 @@ import LoginForm from "./LoginForm";
 import LoginCreate from "./LoginCreate";
 import LoginPasswordLost from "./LoginPasswordLost";
 import LoginPasswordReset from "./LoginPasswordReset";
+import NotFound from "../NotFound";
 
 // Importa o contexto.
 import { UserContext } from "../../UserContext";
@@ -42,6 +43,9 @@ const Login = () => {
 
           {/* Renderiza o componente LoginPasswordReset quando a rota: /resetar for acessada. */}
           <Route path="resetar" element={<LoginPasswordReset />} />
+
+          {/* Renderiza o componente NotFound quando nenhuma rota for acessada. */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </section>

@@ -5,6 +5,9 @@ import React from "react";
 import FeedModal from "./FeedModal";
 import FeedPhotos from "./FeedPhotos";
 
+// Importa o compenente PropTypes.
+import PropTypes from "prop-types";
+
 // Criado um componente chamado Feed que recebe a prop user.
 const Feed = ({ user }) => {
   const [modalPhoto, setModalPhoto] = React.useState(null); // Cria um estado para o modalPhoto e a função atualizadora setModalPhoto. Inicializa o estado com null.
@@ -19,8 +22,6 @@ const Feed = ({ user }) => {
 
     // Criado uma função chamada infiniteScroll responsável por fazer mais páginas serem carregadas quando o usuário chegar no final da página.
     function infiniteScroll() {
-      
-
       // Se o valor do estado infinite for true executa o if.
       if (infinite) {
         const scroll = window.scrollY; // Pega o valor do scrollY, ou seja, a quantidade de pixels que o usuário já rolou a página.
@@ -70,6 +71,20 @@ const Feed = ({ user }) => {
       })}
     </div>
   );
+};
+
+// Define o valor padrão dos props do componente Feed.
+Feed.defaultProps = {
+  user: 0, // Está definindo o valor padrão da prop user como 0.
+};
+
+// Define o tipo dos props recebidos pelo componente Feed.
+Feed.propTypes = {
+  user: PropTypes.oneOfType([
+    // Está definindo que a prop user pode ser uma string ou um número e que é obrigatória.
+    PropTypes.string.isRequired,
+    PropTypes.number.isRequired,
+  ]),
 };
 
 export default Feed; // Exporta o componente Feed.

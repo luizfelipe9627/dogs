@@ -6,6 +6,7 @@ import UserHeader from "./UserHeader";
 import Feed from "../Feed/Feed";
 import UserPhotoPost from "./UserPhotoPost";
 import UserStats from "./UserStats";
+import NotFound from "../NotFound";
 
 // Importa os componenetes da biblioteca React Router DOM.
 import { Routes, Route } from "react-router-dom";
@@ -36,6 +37,9 @@ const User = () => {
 
         {/* Renderiza o componente UserStats quando a rota: /estatisticas for acessada. */}
         <Route path="estatisticas" element={<UserStats />} />
+
+          {/* Renderiza o componente NotFound quando nenhuma rota for acessada. */}
+          <Route path="*" element={<NotFound />} />
       </Routes>
     </section>
   );

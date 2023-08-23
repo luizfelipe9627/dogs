@@ -14,6 +14,8 @@ import Home from "./components/Home";
 import Login from "./components/Login/Login";
 import User from "./components/User/User";
 import Photo from "./components/Photo/Photo";
+import UserProfile from "./components/User/UserProfile";
+import NotFound from "./components/NotFound";
 
 // Importa o contexto.
 import { UserStorage } from "./UserContext";
@@ -59,6 +61,13 @@ function App() {
             {/* Renderiza o componente Photo quando a rota: /foto for acessada. */}
             {/* O :id é um parâmetro dinamico que vai receber o id da foto que vai ser acessada. */}
             <Route path="foto/:id" element={<Photo />} />
+
+            {/* Renderiza o componente UserProfile quando a rota: /user for acessada. */}
+            {/* O :user é um parâmetro dinamico que vai receber o user do usuário que vai ser acessado. */}
+            <Route path="perfil/:user" element={<UserProfile />} />
+
+            {/* Renderiza o componente NotFound quando nenhuma rota for acessada. */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
 
           {/* O Footer é o componente que vai estár presente em todas as rotas, pois está fora do Routes. */}
