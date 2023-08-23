@@ -20,7 +20,7 @@ import { COMMENT_POST } from "../../Api";
 import Error from "../Helper/Error";
 
 // Cria um componente chamado PhotoCommentsForm.
-const PhotoCommentsForm = ({ id, setComments }) => {
+const PhotoCommentsForm = ({ id, setComments, single }) => {
   const [comment, setComment] = React.useState(""); // Cria um estado para armazenar o comentário digitado pelo usuário e a função para atualizar o estado chamado setComment. O estado inicial é uma string vazia.
 
   const { request, error } = useFetch(); // Desestrutura o retorno do useFetch pegando apenas o que vai ser utilizado(no caso o request e o error) nas constantes request e error.
@@ -40,7 +40,11 @@ const PhotoCommentsForm = ({ id, setComments }) => {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form
+      // Se o single for verdadeiro, ou seja se for uma foto única, então renderiza a classe single, se não renderiza uma string vazia, ou seja, não renderiza nada.
+      className={`${styles.form} ${single ? styles.single : ""}`}
+      onSubmit={handleSubmit}
+    >
       {/* Chama o componente Textarea passando as propriedades name, value, placeholder e onChange como parâmetro. */}
       <Textarea
         name="comment"
@@ -49,7 +53,8 @@ const PhotoCommentsForm = ({ id, setComments }) => {
         placeholder="Comente..."
         onChange={({ target }) => setComment(target.value)}
       />
-      <button className={styles.button}>
+      {/* Se single for verdadeiro, ou seja se for uma foto única, então renderiza a classe single, se não renderiza uma string vazia, ou seja, não renderiza nada. */}
+      <button className={`${styles.button} ${single ? styles.single : ""}`}>
         <Enviar />
       </button>
 

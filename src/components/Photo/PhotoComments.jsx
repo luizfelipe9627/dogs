@@ -28,7 +28,13 @@ const PhotoComments = (props) => {
     <React.Fragment>
       {/* Cria uma lista com os comentários, onde o map percorre o array comments e para cada comentário retorna um li com o nome do autor e o comentário digitado pelo usuário. */}
       {/* O ref é utilizado para acessar o elemento commentsSection. */}
-      <ul ref={commentsSection} className={styles.comments}>
+
+      {/* Se a propriedade single for verdadeira ou seja se for uma foto única atribui a classe single, se não atribui a classe comments. */}
+      <ul
+        ref={commentsSection}
+        // Se o single for verdadeiro, ou seja se for uma foto única, então renderiza a classe single, se não renderiza uma string vazia, ou seja, não renderiza nada.
+        className={`${styles.comments} ${props.single ? styles.single : ""}`}
+      >
         {comments.map((comment) => (
           <li key={comment.comment_ID}>
             <b>{comment.comment_author}: </b>
@@ -37,8 +43,14 @@ const PhotoComments = (props) => {
         ))}
       </ul>
 
-      {/* Se o login for verdadeiro, ou seja o usuário estiver logado, então renderiza o componente PhotoCommentsForm que é passado como propriedade o id da foto e a função atualizadora setComments. */}
-      {login && <PhotoCommentsForm id={props.id} setComments={setComments} />}
+      {/* Se o login for verdadeiro, ou seja o usuário estiver logado, então renderiza o componente PhotoCommentsForm que é passado como propriedade o id da foto a função atualizadora setComments e a propriedade single. */}
+      {login && (
+        <PhotoCommentsForm
+          id={props.id}
+          setComments={setComments}
+          single={props.single}
+        />
+      )}
     </React.Fragment>
   );
 };

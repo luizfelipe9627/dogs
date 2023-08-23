@@ -5,6 +5,10 @@
   margin: 1rem;
 }
 
+.single.form {
+  margin: 1rem 0;
+}
+
 .button {
   border: none;
   background-color: transparent;
@@ -15,7 +19,8 @@
   overflow: hidden;
 }
 
-.button:focus,  .button:hover {
+.button:focus,
+.button:hover {
   outline: none;
 }
 

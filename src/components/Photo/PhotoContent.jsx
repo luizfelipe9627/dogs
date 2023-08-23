@@ -17,15 +17,16 @@ import Image from "../Helper/Image";
 // Importa o contexto.
 import { UserContext } from "../../UserContext";
 
-// Cria um componente chamado PhotoContent que recebe a propriedade data.
-const PhotoContent = ({ data }) => {
+// Cria um componente chamado PhotoContent que recebe a propriedade data e single.
+const PhotoContent = ({ data, single }) => {
   const { photo, comments } = data; // Desestrutura a propriedade data puxando as propriedades photo e comments.
-  
+
   const user = React.useContext(UserContext); // Armazena o contexto UserContext na variável user, dando acesso a todas as propriedades e métodos do contexto, sendo elas: data, login, userLogout, userLogin e userRegister.
-  
+
   return (
-    <div className={styles.photo}>
-      <div className={styles.img}>  
+    // Se o single for verdadeiro, ou seja se for uma foto única, então renderiza a classe single, se não renderiza uma string vazia, ou seja, não renderiza nada.
+    <div className={`${styles.photo} ${single ? styles.single : ""}`}>
+      <div className={styles.img}>
         {/* Renderiza o componente Image passando as propriedades src e alt. */}
         <Image src={photo.src} alt={photo.title} />
       </div>
@@ -58,8 +59,8 @@ const PhotoContent = ({ data }) => {
         </div>
       </div>
       {/* chamado o componente PhotoComments passando as propriedades id e comments. */}
-      {/* Passa a propriedade single com o valor false para que o componente PhotoComments saiba que não é uma foto única. */}
-      <PhotoComments id={photo.id} comments={comments} single={false} />
+      {/* Passa a propriedade single com o valor de single para que o componente PhotoComments saiba se é uma foto única ou não. */}
+      <PhotoComments id={photo.id} comments={comments} single={single} />
     </div>
   );
 };

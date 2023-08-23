@@ -99,11 +99,6 @@ export function PHOTOS_GET({ page, total, user }) {
 export function PHOTO_GET(id) {
   return {
     url: `${API_URL}/api/photo/${id}`, // Define o endereço da API que faz a requisição para puxar os dados da foto.
-    options: {
-      // O method é o método da requisição.
-      method: "GET", // Define o método como GET, ou seja, está puxando os dados do usuário.
-      cache: "no-store", // Define que não será armazenado em cache.
-    },
   };
 }
 

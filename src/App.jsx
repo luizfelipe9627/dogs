@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Login from "./components/Login/Login";
 import User from "./components/User/User";
+import Photo from "./components/Photo/Photo";
 
 // Importa o contexto.
 import { UserStorage } from "./UserContext";
@@ -48,12 +49,16 @@ function App() {
             <Route
               path="conta/*"
               element={
-                // chamado o componente ProtectedRoute responsável por verificar se o usuário está logado e passa o componente User responsável por renderizar a página de usuário como filho.
+                // Chamado o componente ProtectedRoute responsável por verificar se o usuário está logado e passa o componente User responsável por renderizar a página de usuário como filho.
                 <ProtectedRoute>
                   <User />
                 </ProtectedRoute>
               }
             />
+
+            {/* Renderiza o componente Photo quando a rota: /foto for acessada. */}
+            {/* O :id é um parâmetro dinamico que vai receber o id da foto que vai ser acessada. */}
+            <Route path="foto/:id" element={<Photo />} />
           </Routes>
 
           {/* O Footer é o componente que vai estár presente em todas as rotas, pois está fora do Routes. */}

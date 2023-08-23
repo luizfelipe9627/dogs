@@ -17,27 +17,34 @@ import Loading from "../Helper/Loading";
 // Importa o CSS Module.
 import styles from "./FeedPhotos.module.css";
 
-// Cria um componente chamado FeedPhotos que recebe a props user, setModalPhoto e pages do componente Feed.
-const FeedPhotos = ({ user, setModalPhoto, page }) => {
+// Cria um componente chamado FeedPhotos que recebe a prop user, page, e as funções atualizadoras setModalPhoto e setInfinite.
+const FeedPhotos = ({ user, page, setModalPhoto, setInfinite }) => {
   const { data, loading, error, request } = useFetch(); // Desestrutura o retorno da função useFetch e armazena a resposta da API nas constantes data, loading, error e request.
 
-  // O useEffect executa quando o componente for renderizado na tela e toda vez que o user, page ou request mudar.
+  // O useEffect executa quando o componente for renderizado na tela e toda vez que o user, page e setInfinite atualizar.
   React.useEffect(() => {
     // Criado uma função chamada fetchPhotos responsável por fazer a requisição das fotos da API. O async faz com que a função espere a resposta da API para continuar o código.a
     async function fetchPhotos() {
+      const total = 6; // Cria uma constante chamada total e inicializa com o valor 6.
+
       // Desestrutura o retorno da função PHOTO_GET e armazena a url e options nas constantes url e options. A função PHOTOS_GET recebe um objeto vazio.
       const { url, options } = PHOTOS_GET({
         page, // Número da página que será exibida.
-        total: 3, // Total de fotos que será exibida.
+        total, // Total de fotos que será exibida.
         user, // Número do ID do usuário.
       });
 
-      // A função request recebe a url que é a url da API e options que são as opções da requisição.
-      await request(url, options); // O await faz com que a função espere a resposta da API para continuar o código.
+      // Desestrutura o retorno da função request armazenando a response que armazena o resultado do fetch e o json que armazena a resposta convertida em json nas constantes response e json. A função request recebe a url que é a url da API e options que são as opções da requisição.
+      const { response, json } = await request(url, options); // O await faz com que a função espere a resposta da API para continuar o código.
+
+      // Se a resposta for true, se a resposta for ok e se o tamanho da array json for menor que o total(no caso 6) então não tem mais fotos para serem carregadas executando o if.
+      if (response && response.ok && json.length < total) {
+        setInfinite(false); // Muda o valor do estado infinite para false.
+      }
     }
 
     fetchPhotos(); // Executa a função fetchPhotos.
-  }, [request, user, page]);
+  }, [request, user, page, setInfinite]);
 
   // Se o error for verdadeiro retorna a mensagem de erro.
   if (error) return <Error error={error} />;
