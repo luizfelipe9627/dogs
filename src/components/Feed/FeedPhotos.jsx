@@ -34,8 +34,8 @@ const FeedPhotos = ({ user, page, setModalPhoto, setInfinite }) => {
         user, // Número do ID do usuário.
       });
 
-      // Desestrutura o retorno da função request armazenando a response que armazena o resultado do fetch e o json que armazena a resposta convertida em json nas constantes response e json. A função request recebe a url que é a url da API e options que são as opções da requisição.
-      const { response, json } = await request(url, options); // O await faz com que a função espere a resposta da API para continuar o código.
+      // O await faz com que a função espere a resposta da API para continuar o código.
+      const { response, json } = await request(url, options); // Desestrutura o retorno da função request armazenando a response que armazena o resultado do fetch e o json que armazena a resposta convertida em json nas constantes response e json. A função request recebe a url que é a url da API e options que são as opções da requisição.
 
       // Se a resposta for true, se a resposta for ok e se o tamanho da array json for menor que o total(no caso 6) então não tem mais fotos para serem carregadas executando o if.
       if (response && response.ok && json.length < total) {
