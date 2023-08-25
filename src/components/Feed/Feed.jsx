@@ -7,6 +7,7 @@ import FeedPhotos from "./FeedPhotos";
 
 // Importa o compenente PropTypes.
 import PropTypes from "prop-types";
+import Head from "../Helper/Head";
 
 // Criado um componente chamado Feed que recebe a prop user.
 const Feed = ({ user }) => {

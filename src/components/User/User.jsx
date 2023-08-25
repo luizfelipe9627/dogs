@@ -14,12 +14,18 @@ import { Routes, Route } from "react-router-dom";
 // Importa o contexto.
 import { UserContext } from "../../UserContext";
 
+// Importa o helper.
+import Head from "../Helper/Head";
+
 // Criado um componente chamado User.
 const User = () => {
   const { data } = React.useContext(UserContext); // Desestrutura o data de dentro do contexto UserContext. O data é responsável por armazenar os dados do usuário logado.
 
   return (
     <section className="container">
+       {/* Chama o componente Head e passa a props title que é usada para mudar o título da página. */}
+       <Head title="Minha Conta" />;
+    
       {/* O UserHeader é o componente que vai estár presente em todas as rotas, pois está fora do Routes. */}
       <UserHeader />
 

@@ -17,8 +17,14 @@ import { UserContext } from "../../UserContext";
 // Importa os CSS Modules.
 import styles from "./Login.module.css";
 
+// Importa o helper.
+import Head from "../Helper/Head";
+
 // Criado um componente chamado Login.
 const Login = () => {
+  // Chama o componente Head e passa as props title e description que são usadas para mudar o título da página e a descrição da página.
+  <Head title="Fotos" description="Home do site Dogs, com o feed de fotos." />;
+
   const { login } = React.useContext(UserContext); // Puxa o estado login do contexto UserContext e armazena na variável login.
 
   if (login === true) return <Navigate to="/" />; // Se o login for true, redireciona o usuário para a rota raiz.

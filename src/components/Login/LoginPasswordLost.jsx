@@ -1,11 +1,11 @@
 // Importa a biblioteca React.
 import React from "react";
 
-// Importa o componenete.
+// Importa os componenetes.
 import Input from "../Forms/Input";
 import Button from "../Forms/Button";
 
-// Importa o hook.
+// Importa os hooks.
 import useForm from "../../hooks/useForm";
 import useFetch from "../../hooks/useFetch";
 
@@ -14,6 +14,7 @@ import { PASSWORD_LOST } from "../../Api";
 
 // Importa o helper.
 import Error from "../Helper/Error";
+import Head from "../Helper/Head";
 
 // Criado um componente chamado LoginPasswordLost.
 const LoginPasswordLost = () => {
@@ -38,15 +39,15 @@ const LoginPasswordLost = () => {
 
       // O await faz com que a função espere a resposta da API para continuar o código.
       const { response, json } = await request(url, options); // Desestrutura o retorno da função request armazenando a response que armazena o resultado do fetch e o json que armazena a resposta convertida em json nas constantes response e json. A função request recebe a url que é a url da API e options que são as opções da requisição.
-
-      console.log(json);
     }
   }
 
   return (
     <section>
+      {/* Chama o componente Head e passa a props title que é usada para mudar o título da página. */}
+      <Head title="Perdeu a senha" />
+      
       <h1 className="title">Perdeu a senha?</h1>
-
       {/* Se data for verdadeiro, ou seja, se a resposta da API for verdadeira, então mostra o parágrafo com o valor da resposta da API, caso contrário, mostra o formulário. */}
       {data ? (
         <p style={{ color: "#4C1" }}>{data}</p>
@@ -64,7 +65,6 @@ const LoginPasswordLost = () => {
           )}
         </form>
       )}
-
       {/* Chama o componente Error e passando a props error que contém o erro retornado pela API. */}
       <Error error={error} />
     </section>

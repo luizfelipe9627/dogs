@@ -16,6 +16,7 @@ import { PHOTO_GET } from "../../Api";
 // Importa o helper.
 import Error from "../Helper/Error";
 import Loading from "../Helper/Loading";
+import Head from "../Helper/Head";
 
 // Cria um componente chamado Photo.
 const Photo = () => {
@@ -44,6 +45,9 @@ const Photo = () => {
     // Retorna o componente PhotoContent com a prop data que contém os dados da foto.
     return (
       <section className="container mainContainer">
+        {/* Chama o componente Head e passa a props title que é usada para mudar o título da página. */}
+        <Head title={data.photo.title} />;
+
         {/* Chama o componente PhotoContent passando a prop data que contém os dados da foto e a prop single com o valor true para que o componente PhotoContent saiba que é uma foto única. */}
         <PhotoContent data={data} single={true} />
       </section>

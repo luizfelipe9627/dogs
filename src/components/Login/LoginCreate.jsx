@@ -17,6 +17,7 @@ import { UserContext } from "../../UserContext";
 
 // Importa o helper.
 import Error from "../Helper/Error";
+import Head from "../Helper/Head";
 
 // Criado um componente chamado LoginCreate.
 const LoginCreate = () => {
@@ -51,6 +52,9 @@ const LoginCreate = () => {
 
   return (
     <section className="animeLeft">
+      {/* Chama o componente Head e passa a props title que é usada para mudar o título da página. */}
+      <Head title="Crie sua conta" />
+
       <h1 className="title">Cadastre-se</h1>
 
       <form onSubmit={handleSubmit}>

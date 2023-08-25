@@ -20,6 +20,7 @@ import { PHOTO_POST } from "../../Api";
 
 // Importa o Helper.
 import Error from "../Helper/Error";
+import Head from "../Helper/Head";
 
 // Criado um componente chamado UserPhotoPost.
 const UserPhotoPost = () => {
@@ -74,6 +75,9 @@ const UserPhotoPost = () => {
 
   return (
     <section className={`${styles.photoPost} animaLeft`}>
+      {/* Chama o componente Head e passa a props title que é usada para mudar o título da página. */}
+      <Head title="Poste sua foto" />
+
       <form onSubmit={handleSubmit}>
         {/* Está chamando o componente Input e passando as propriedades label, type e name. */}
         {/* O operador spread(...) está dando acesso a todas as props do hook useForm, sendo elas: value, onChange, error e as funções validate e onBlur. */}
@@ -97,7 +101,6 @@ const UserPhotoPost = () => {
         {/* Está chamando o componente Error e passando a propriedade error que é o erro retornado pela API. */}
         <Error error={error} />
       </form>
-
       <div>
         {/* Se o estado img.preview for verdadeiro, então renderiza o elemento div com a classe preview. */}
         {img.preview && (
