@@ -93,5 +93,11 @@ a {
 }
 
 .AppBody {
+  /* O flex 1 faz com que o footer fique sempre no final da página. */
   flex: 1;
 }
+
+.VictoryContainer {
+  height: initial !important;
+}
+

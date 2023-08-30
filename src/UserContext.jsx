@@ -51,7 +51,7 @@ export const UserStorage = ({ children }) => {
 
       // Se a resposta não for ok, executa o if.
       if (!tokenResponse.ok) {
-        throw new Error("Usuário ou senha inválidos."); // Lança um erro com uma mensagem personalizada.
+        throw new Error("Dados incorretos."); // Lança um erro com uma mensagem personalizada.
       }
 
       const { token } = await tokenResponse.json(); // Transforma a resposta da requisição em um objeto JSON e armazena na constante token quando a resposta chegar.

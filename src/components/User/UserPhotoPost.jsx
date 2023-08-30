@@ -101,6 +101,7 @@ const UserPhotoPost = () => {
         {/* Está chamando o componente Error e passando a propriedade error que é o erro retornado pela API. */}
         <Error error={error} />
       </form>
+      
       <div>
         {/* Se o estado img.preview for verdadeiro, então renderiza o elemento div com a classe preview. */}
         {img.preview && (

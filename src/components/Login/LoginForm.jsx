@@ -44,7 +44,7 @@ const LoginForm = () => {
     <section className="animeLeft">
       {/* Chama o componente Head e passa a props title que é usada para mudar o título da página. */}
       <Head title="Login" />
-      
+
       <h1 className="title">Login</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         {/* Está chamando o componente Input e passando as props label, type e name. */}
@@ -63,10 +63,12 @@ const LoginForm = () => {
         {/* Está chamando o componente Error e passando a props error que recebe o estado error do contexto UserContext. */}
         <Error error={error} />
       </form>
+
       {/* O Link é responsável por criar um link para uma rota e o to é responsável por definir a rota. */}
       <Link className={styles.perdeu} to="/login/perdeu">
         Perdeu a senha?
       </Link>
+
       <div className={styles.cadastro}>
         <h2 className={styles.subtitle}>Cadastre-se</h2>
         <p>Ainda não possui conta? Cadastre-se no site.</p>

@@ -71,10 +71,10 @@ const LoginPasswordReset = () => {
   }
 
   return (
-    <div>
+    <section className="animeLeft">
       {/* Chama o componente Head e passa a props title que é usada para mudar o título da página. */}
       <Head title="Resete a sonta" />
-      
+
       <h1 className="title">Resete a senha</h1>
       <form onSubmit={handleSubmit}>
         {/* Está chamando o componente Input e passando as props label, type e name. */}
@@ -95,7 +95,7 @@ const LoginPasswordReset = () => {
       </form>
       {/* Chama o componente Error e passando a props error que contém o erro retornado pela API. */}
       <Error error={error} />
-    </div>
+    </section>
   );
 };
 

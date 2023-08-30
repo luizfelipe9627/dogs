@@ -43,7 +43,7 @@ const LoginPasswordLost = () => {
   }
 
   return (
-    <section>
+    <section className="animeLeft">
       {/* Chama o componente Head e passa a props title que é usada para mudar o título da página. */}
       <Head title="Perdeu a senha" />
       
