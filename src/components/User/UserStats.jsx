@@ -7,7 +7,7 @@ import Loading from "../Helper/Loading";
 import Error from "../Helper/Error";
 
 // Importa o hook.
-import useFetch from "../../Hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 
 // Importa a API.
 import { STATS_GET } from "../../Api";
