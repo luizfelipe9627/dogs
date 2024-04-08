@@ -7,7 +7,6 @@ import FeedPhotos from "./FeedPhotos";
 
 // Importa o compenente PropTypes.
 import PropTypes from "prop-types";
-import Head from "../Helper/Head";
 
 // Criado um componente chamado Feed que recebe a prop user.
 const Feed = ({ user }) => {
@@ -70,6 +69,19 @@ const Feed = ({ user }) => {
           />
         );
       })}
+
+      {/* Se o valor do estado infinite for false ou seja, se não existirem mais postagens e o usuário não estiver logado, renderiza um parágrafo com a mensagem "Não existem mais postagens." */}
+      {!infinite && !user && (
+        <p
+          style={{
+            textAlign: "center",
+            padding: "2rem 0 4rem 0",
+            color: "#888",
+          }}
+        >
+          Não existem mais postagens.
+        </p>
+      )}
     </div>
   );
 };
